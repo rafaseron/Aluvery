@@ -1,5 +1,6 @@
 package br.com.rafaseron.aluvery
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,30 +18,36 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AluveryTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+                Surface {
+                    MyFirstComposable()
                 }
             }
+
+
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MyFirstComposable(){
+    Text(text = "My First Composable")
+    Text(text = "Texto maior bem maior ta ligado")
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Preview Sem Argumentos / Ou Com Argumentos Diferentes",
+    uiMode = Configuration.UI_MODE_NIGHT_YES /*,
+    showSystemUi = true*/)
+@Preview(name = "Preview Usando Argumentos",
+    heightDp = 200,
+    widthDp = 300,
+    showBackground = true,
+    backgroundColor = 0xFF008000)
 @Composable
-fun GreetingPreview() {
-    AluveryTheme {
-        Greeting("Android")
+fun MyFirstComposablePreview(){
+    AluveryTheme { //darkTheme so ta funcionando em API 31 - Android 12
+        Surface {
+            MyFirstComposable()
+        }
     }
+
 }
