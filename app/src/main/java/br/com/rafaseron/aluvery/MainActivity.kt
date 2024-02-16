@@ -4,6 +4,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,10 +25,54 @@ class MainActivity : ComponentActivity() {
                     MyFirstComposable()
                 }
             }
-
-
         }
     }
+}
+
+@Preview (showBackground = true)
+@Composable
+fun ColumnPreview() {
+    Column {
+        Text(text = "My First Composable")
+        Text(text = "Texto maior bem maior ta ligado")
+    }
+}
+
+@Preview (showBackground = true)
+@Composable
+fun RowPreview() {
+    Row {
+        Text(text = "My First Composable")
+        Text(text = "Texto maior bem maior ta ligado")
+    }
+}
+
+@Preview (showBackground = true)
+@Composable
+fun BowPreview() {
+    Box {
+        Text(text = "My First Composable")
+        Text(text = "Texto maior bem maior ta ligado")
+    }
+}
+
+@Preview (showBackground = true)
+@Composable
+fun CustomLayoutPreview() {
+    Column {
+        Text(text = "Rafael Seron")
+        Text(text = "Android Developer")
+        Row {
+            Text(text = "RS")
+            Text(text = "✅")
+        }
+        Box {
+            Text(text = "✅")
+            Text(text = "Texto 6")
+        }
+    }
+
+
 }
 
 @Composable
@@ -34,17 +81,10 @@ fun MyFirstComposable(){
     Text(text = "Texto maior bem maior ta ligado")
 }
 
-@Preview(name = "Preview Sem Argumentos / Ou Com Argumentos Diferentes",
-    uiMode = Configuration.UI_MODE_NIGHT_YES /*,
-    showSystemUi = true*/)
-@Preview(name = "Preview Usando Argumentos",
-    heightDp = 200,
-    widthDp = 300,
-    showBackground = true,
-    backgroundColor = 0xFF008000)
+@Preview
 @Composable
 fun MyFirstComposablePreview(){
-    AluveryTheme { //darkTheme so ta funcionando em API 31 - Android 12
+    AluveryTheme {
         Surface {
             MyFirstComposable()
         }
