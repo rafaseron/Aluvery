@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -61,17 +62,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ProductSection () {
-    Column(modifier = Modifier
-        .height(282.dp)
-        .width(632.dp)) {
+    Column(modifier = Modifier) {
 
         Text(text = "Promoções",
             fontWeight = FontWeight(400),
-            fontSize = 20.sp)
+            fontSize = 20.sp,
+            modifier = Modifier.padding(start = 16.dp, top = 8.dp))
 
-        Spacer(modifier = Modifier.padding(3.dp))
+        Spacer(modifier = Modifier.padding(8.dp))
 
-        Row() {
+        Row(modifier = Modifier.padding(start = 16.dp,
+            end = 16.dp,
+            bottom = 8.dp)
+            .fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             ProductItem()
             ProductItem()
             ProductItem()
@@ -86,7 +89,7 @@ fun ProductItem() {
     val listColors = listOf<Color>(purple, Color.Cyan)
     val imageSize = 100.dp //variavel para vincular e deixar padronizado os tamanhos dos composables
 
-    Surface(shadowElevation = 20.dp, shape = RoundedCornerShape(10.dp), modifier = Modifier.padding(3.dp)) {
+    Surface(shadowElevation = 20.dp, shape = RoundedCornerShape(10.dp)) {
 
         Column(modifier = Modifier
             .heightIn(min = 250.dp, max = 300.dp)
@@ -130,7 +133,7 @@ fun ProductItem() {
 
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, /*widthDp = 1000*/)
 @Composable
 private fun ProductSectionPreview() {
     Surface {
