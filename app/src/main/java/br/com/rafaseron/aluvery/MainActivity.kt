@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -62,22 +63,35 @@ fun ProductItem() {
         Box(modifier = Modifier
             .height(100.dp)
             .fillMaxWidth()
-            .background(brush = Brush.horizontalGradient(colors = listColors)))
+            .background(brush = Brush.horizontalGradient(colors = listColors))){
 
-        Box(modifier = Modifier.padding(horizontal = 50.dp)){
-            Image(painter = painterResource(id = R.drawable.ic_launcher_background),
-                contentDescription = "Imagem do Produto",
-                modifier = Modifier
-                    .width(100.dp)
-                    .height(100.dp)
-                    /*.size(100.dp) da pra ser assim tbm o tamanho da imagem*/
-                    .offset(y = -50.dp)
-                    .clip(shape = CircleShape))
+            Box(modifier = Modifier.padding(horizontal = 50.dp)){
+                Image(painter = painterResource(id = R.drawable.ic_launcher_background),
+                    contentDescription = "Imagem do Produto",
+                    modifier = Modifier
+                        .width(100.dp)
+                        .height(100.dp)
+                        /*.size(100.dp) da pra ser assim tbm o tamanho da imagem*/
+                        .offset(y = 50.dp)
+                        .clip(shape = CircleShape))
+            }
+
         }
-        Text(text = "Nome do produto", modifier = Modifier.padding(horizontal = 20.dp,
-            vertical = 2.dp).offset(y = -30.dp))
-        Text(text = "Preço", modifier = Modifier.padding(horizontal = 20.dp,
-            vertical = 2.dp).offset(y = -25.dp))
+
+        Spacer(modifier = Modifier.height(50.dp))
+
+        Text(text = "Lorem ipsum", modifier = Modifier
+            .padding(
+                horizontal = 20.dp,
+                vertical = 2.dp
+            )
+            .offset(y = 0.dp))
+        Text(text = "R$ 14,99", modifier = Modifier
+            .padding(
+                horizontal = 20.dp,
+                vertical = 2.dp
+            )
+            .offset(y = 0.dp))
     }
 }
 
