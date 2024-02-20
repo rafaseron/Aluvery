@@ -62,14 +62,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ProductSection () {
-    Column(modifier = Modifier) {
+    Column(modifier = Modifier, verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
         Text(text = "Promoções",
             fontWeight = FontWeight(400),
             fontSize = 20.sp,
             modifier = Modifier.padding(start = 16.dp, top = 8.dp))
 
-        Spacer(modifier = Modifier.padding(8.dp))
 
         Row(modifier = Modifier.padding(start = 16.dp,
             end = 16.dp,
