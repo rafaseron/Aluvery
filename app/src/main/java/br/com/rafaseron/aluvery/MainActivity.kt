@@ -2,6 +2,7 @@ package br.com.rafaseron.aluvery
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.transition.CircularPropagation
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -59,46 +61,49 @@ class MainActivity : ComponentActivity() {
 fun ProductItem() {
     val purple = colorResource(id = R.color.purple_500)
     val listColors = listOf<Color>(purple, Color.Cyan)
-    Column(modifier = Modifier
-        .height(250.dp)
-        .width(200.dp)
-        .clip(RoundedCornerShape(15.dp))
-        .border(width = 1.dp, color = Color.Gray, shape = RoundedCornerShape(15.dp))) {
-        Box(modifier = Modifier
-            .height(100.dp)
-            .fillMaxWidth()
-            .background(brush = Brush.horizontalGradient(colors = listColors))){
+    val imageSize = 100.dp //variavel para vincular e deixar padronizado os tamanhos dos composables
 
-            Box(modifier = Modifier.padding(horizontal = 50.dp)){
-                Image(painter = painterResource(id = R.drawable.ic_launcher_background),
-                    contentDescription = "Imagem do Produto",
-                    modifier = Modifier
-                        .width(100.dp)
-                        .height(100.dp)
-                        /*.size(100.dp) da pra ser assim tbm o tamanho da imagem*/
-                        .offset(y = 50.dp)
-                        .clip(shape = CircleShape))
+    Surface(shadowElevation = 20.dp, shape = RoundedCornerShape(10.dp), modifier = Modifier.padding(3.dp)) {
+
+        Column(modifier = Modifier
+            .heightIn(min = 250.dp, max = 300.dp)
+            .width(imageSize*2)) {
+            Box(modifier = Modifier
+                .height(imageSize)
+                .fillMaxWidth()
+                .background(brush = Brush.horizontalGradient(colors = listColors))){
+
+                Box(modifier = Modifier.padding(horizontal = 50.dp)){
+                    Image(painter = painterResource(id = R.drawable.ic_launcher_background),
+                        contentDescription = "Imagem do Produto",
+                        modifier = Modifier
+                            .width(imageSize)
+                            .height(imageSize)
+                            /*.size(100.dp) da pra ser assim tbm o tamanho da imagem*/
+                            .offset(y = imageSize/2)
+                            .clip(shape = CircleShape))
+                }
+
             }
 
+            Spacer(modifier = Modifier.height(imageSize/2))
+
+            Column(modifier = Modifier.padding(horizontal = 16.dp,
+                vertical = 8.dp)) {
+
+                Text(text = LoremIpsum(50).values.first(), fontSize = 18.sp,
+                    fontWeight = FontWeight(700),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier)
+                Text(text = "R$ 14,99", fontSize = 14.sp,
+                    fontWeight = FontWeight(400),
+                    modifier = Modifier)
+            }
         }
-
-        Spacer(modifier = Modifier.height(50.dp))
-
-        Column(modifier = Modifier.padding(horizontal = 16.dp,
-            vertical = 8.dp)) {
-
-            Text(text = LoremIpsum(50).values.first(), fontSize = 18.sp,
-                fontWeight = FontWeight(700),
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier)
-            Text(text = "R$ 14,99", fontSize = 14.sp,
-                fontWeight = FontWeight(400),
-                modifier = Modifier)
-        }
-
 
     }
+
 }
 
 
