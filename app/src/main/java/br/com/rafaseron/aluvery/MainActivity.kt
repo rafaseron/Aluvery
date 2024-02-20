@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true/*, showSystemUi = true*/)
 @Composable
 fun ProductItem() {
     val purple = colorResource(id = R.color.purple_500)
@@ -70,6 +69,7 @@ fun ProductItem() {
         Column(modifier = Modifier
             .heightIn(min = 250.dp, max = 300.dp)
             .width(imageSize * 2)) {
+
             Box(modifier = Modifier
                 .height(imageSize)
                 .fillMaxWidth()
@@ -106,6 +106,17 @@ fun ProductItem() {
 
     }
 
+}
+
+@Preview(showBackground = true, /*showSystemUi = true*/)
+@Composable
+fun ProductItemPreview() {
+    Surface {
+        AluveryTheme {
+            ProductItem()
+        }
+    }
+    
 }
 
 
