@@ -50,12 +50,34 @@ class MainActivity : ComponentActivity() {
         setContent {
             AluveryTheme {
                 Surface {
-                    ProductItem()
+                    ProductSection()
+                    //ProductItem()
                     //DesafioDeItem()
                 }
             }
         }
     }
+}
+
+@Composable
+fun ProductSection () {
+    Column(modifier = Modifier
+        .height(282.dp)
+        .width(632.dp)) {
+
+        Text(text = "Promoções",
+            fontWeight = FontWeight(400),
+            fontSize = 20.sp)
+
+        Spacer(modifier = Modifier.padding(3.dp))
+
+        Row() {
+            ProductItem()
+            ProductItem()
+            ProductItem()
+        }
+    }
+    
 }
 
 @Composable
@@ -106,6 +128,16 @@ fun ProductItem() {
 
     }
 
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ProductSectionPreview() {
+    Surface {
+        AluveryTheme {
+            ProductSection()
+        }
+    }
 }
 
 @Preview(showBackground = true, /*showSystemUi = true*/)
