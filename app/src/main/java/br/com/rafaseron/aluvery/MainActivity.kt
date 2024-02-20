@@ -110,7 +110,7 @@ fun ProductItem() {
 
 @Preview(showBackground = true, /*showSystemUi = true*/)
 @Composable
-fun ProductItemPreview() {
+private fun ProductItemPreview() {
     Surface {
         AluveryTheme {
             ProductItem()
