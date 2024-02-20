@@ -41,6 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.rafaseron.aluvery.ui.tests.DesafioDeItem
 import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,6 +51,7 @@ class MainActivity : ComponentActivity() {
             AluveryTheme {
                 Surface {
                     ProductItem()
+                    //DesafioDeItem()
                 }
             }
         }
@@ -67,7 +69,7 @@ fun ProductItem() {
 
         Column(modifier = Modifier
             .heightIn(min = 250.dp, max = 300.dp)
-            .width(imageSize*2)) {
+            .width(imageSize * 2)) {
             Box(modifier = Modifier
                 .height(imageSize)
                 .fillMaxWidth()
@@ -80,7 +82,7 @@ fun ProductItem() {
                             .width(imageSize)
                             .height(imageSize)
                             /*.size(100.dp) da pra ser assim tbm o tamanho da imagem*/
-                            .offset(y = imageSize/2)
+                            .offset(y = imageSize / 2)
                             .clip(shape = CircleShape))
                 }
 
