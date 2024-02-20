@@ -33,8 +33,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
 
 class MainActivity : ComponentActivity() {
@@ -80,18 +84,20 @@ fun ProductItem() {
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        Text(text = "Lorem ipsum", modifier = Modifier
-            .padding(
-                horizontal = 20.dp,
-                vertical = 2.dp
-            )
-            .offset(y = 0.dp))
-        Text(text = "R$ 14,99", modifier = Modifier
-            .padding(
-                horizontal = 20.dp,
-                vertical = 2.dp
-            )
-            .offset(y = 0.dp))
+        Column(modifier = Modifier.padding(horizontal = 16.dp,
+            vertical = 8.dp)) {
+
+            Text(text = LoremIpsum(50).values.first(), fontSize = 18.sp,
+                fontWeight = FontWeight(700),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier)
+            Text(text = "R$ 14,99", fontSize = 14.sp,
+                fontWeight = FontWeight(400),
+                modifier = Modifier)
+        }
+
+
     }
 }
 
