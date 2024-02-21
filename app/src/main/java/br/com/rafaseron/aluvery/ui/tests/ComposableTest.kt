@@ -178,7 +178,7 @@ fun ItemDescritivo(produto: Product) {
                     modifier = Modifier
                 )
                 Text(
-                    text = produto.price.toString(), fontSize = 14.sp,
+                    text = "R$ ${produto.price.toString()}", fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     modifier = Modifier
                 )
