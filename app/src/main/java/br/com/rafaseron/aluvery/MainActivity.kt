@@ -75,16 +75,17 @@ fun ProductSection () {
 
         Row(modifier = Modifier
             .padding(
-                start = 16.dp,
                 end = 16.dp,
-                bottom = 8.dp
+                bottom = 16.dp
             )
             .fillMaxWidth()
             .horizontalScroll(state = rememberScrollState() /*ScrollState(0)*/),
             horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            Spacer(modifier = Modifier) //esse spacer adiciona um espaco antes da lista iniciar
             ProductItem()
             ProductItem()
             ProductItem()
+            Spacer(modifier = Modifier) //esse spacer adiciona um espaco quando a lista terminar
         }
     }
     
@@ -96,7 +97,7 @@ fun ProductItem() {
     val listColors = listOf<Color>(purple, Color.Cyan)
     val imageSize = 100.dp //variavel para vincular e deixar padronizado os tamanhos dos composables
 
-    Surface(shadowElevation = 20.dp, shape = RoundedCornerShape(10.dp)) {
+    Surface(shadowElevation = 8.dp, shape = RoundedCornerShape(10.dp)) {
 
         Column(modifier = Modifier
             .heightIn(min = 250.dp, max = 300.dp)
