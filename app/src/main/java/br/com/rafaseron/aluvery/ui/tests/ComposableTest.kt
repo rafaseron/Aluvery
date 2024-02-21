@@ -207,7 +207,7 @@ fun ItemComDescricaoPreview() {
         val objetoProduto = Product(
             nome = "Burguer",
             descricao = "Dois hamburgueres, alface, queijo, molho especial, cebola, picles num pao com gergelim",
-            conteutoDescritivo = "descricao da imagem",
+            conteutoDescritivo = "big mac",
             imagemId = R.drawable.burger,
             preco = "15,49",
             hasDiscription = true
@@ -221,11 +221,11 @@ fun ItemSemDescricaoPreview() {
     Surface(modifier = Modifier.height(250.dp).padding(16.dp), shape = RoundedCornerShape(10.dp),
         shadowElevation = 8.dp) {
         val objetoProduto = Product(
-            nome = "Burguer",
+            nome = "Fries",
             descricao = "",
-            conteutoDescritivo = "descricao da imagem",
-            imagemId = R.drawable.burger,
-            preco = "15,49",
+            conteutoDescritivo = "fritas",
+            imagemId = R.drawable.fries,
+            preco = "7,99",
             hasDiscription = false
         )
         ItemDescritivo(objetoProduto)
