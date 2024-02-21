@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
             AluveryTheme {
                 Surface {
                     //DesafioSecaoDeProdutos()
-                    ProductSection()
+                    //ProductSection()
                     //ProductItem()
                     //DesafioDeItem()
                 }
