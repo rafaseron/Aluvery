@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
@@ -126,6 +127,8 @@ fun DesafioSecaoDeProdutos() {
             Spacer(modifier = Modifier)
 
             ProductItemWithDescription()
+            ChallengeItemComDescricao(true, descricao = "isso aqui e um texto grandao aoao oaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoao")
+            ChallengeItemComDescricao(false, descricao = "")
             ProductItem()
             ProductItemWithDescription()
             ProductItem()
@@ -178,4 +181,67 @@ fun TextDescription() {
         }
     }
     
+}
+
+@Composable
+fun ChallengeItemComDescricao(description: Boolean, descricao: String) {
+    val purple = colorResource(id = R.color.purple_500)
+    val listColors = listOf<Color>(purple, Color.Cyan)
+    val imageSize = 100.dp //variavel para vincular e deixar padronizado os tamanhos dos composables
+
+    Surface(shadowElevation = 8.dp, shape = RoundedCornerShape(10.dp)) {
+
+        Column(modifier = Modifier
+            .height(250.dp)
+            .width(imageSize * 2)
+            .verticalScroll(state = rememberScrollState())) {
+
+            Box(modifier = Modifier
+                .height(imageSize)
+                .fillMaxWidth()
+                .background(brush = Brush.horizontalGradient(colors = listColors))){
+
+                Box(modifier = Modifier.padding(horizontal = 50.dp)){
+                    Image(painter = painterResource(id = R.drawable.ic_launcher_background),
+                        contentDescription = "Imagem do Produto",
+                        modifier = Modifier
+                            .width(imageSize)
+                            .height(imageSize)
+                            /*.size(100.dp) da pra ser assim tbm o tamanho da imagem*/
+                            .offset(y = imageSize / 2)
+                            .clip(shape = CircleShape))
+                }
+
+            }
+
+            Spacer(modifier = Modifier.height(imageSize/2))
+
+            Column() {
+
+                Text(text = LoremIpsum(50).values.first(), fontSize = 18.sp,
+                    fontWeight = FontWeight(700),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(horizontal = 16.dp,
+                        vertical = 8.dp))
+                Text(text = "R$ 14,99", fontSize = 14.sp,
+                    fontWeight = FontWeight(400),
+                    modifier = Modifier.padding(horizontal = 16.dp,
+                        vertical = 8.dp))
+            }
+
+            if (description == true){
+                Text(text = descricao,
+                    modifier = Modifier
+                        .offset(y = -8.dp)
+                        .background(color = Color.Blue)
+                        .padding(start = 16.dp, end = 16.dp,
+                            top = 16.dp, bottom = 16.dp))
+            }else{
+            }
+
+        }
+
+    }
+
 }

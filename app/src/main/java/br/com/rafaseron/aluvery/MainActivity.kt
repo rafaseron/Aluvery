@@ -45,6 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.rafaseron.aluvery.ui.tests.ChallengeItemComDescricao
 import br.com.rafaseron.aluvery.ui.tests.DesafioDeItem
 import br.com.rafaseron.aluvery.ui.tests.DesafioSecaoDeProdutos
 import br.com.rafaseron.aluvery.ui.tests.ProductItemWithDescription
