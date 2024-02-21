@@ -1,18 +1,25 @@
 package br.com.rafaseron.aluvery.ui.tests
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,8 +37,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
+import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
+import br.com.rafaseron.aluvery.ProductItem
 import br.com.rafaseron.aluvery.R
+import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
+import java.nio.file.WatchEvent
+import kotlin.math.round
 
 @Preview(showBackground = true)
 @Composable
@@ -91,4 +104,78 @@ fun DesafioDeItem() {
         }
 
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DesafioSecaoDeProdutos() {
+    Column(modifier = Modifier.padding(
+        top = 16.dp
+    )) {
+
+        Text(text = "Promoções", modifier = Modifier.padding(start = 16.dp,
+            bottom = 16.dp),
+            fontSize = 16.sp, fontWeight = FontWeight(400)
+        )
+
+        Row(modifier = Modifier
+            .horizontalScroll(state = rememberScrollState())
+            .verticalScroll(state = rememberScrollState())
+            .padding(vertical = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            Spacer(modifier = Modifier)
+
+            ProductItemWithDescription()
+            ProductItem()
+            ProductItemWithDescription()
+            ProductItem()
+            Spacer(modifier = Modifier)
+
+        }
+
+    }
+    
+}
+
+@Preview
+@Composable
+fun ProductItemWithDescription() {
+    Surface(shape = RoundedCornerShape(5),
+        shadowElevation = 8.dp) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(-2.dp),
+            modifier = Modifier
+                .height(250.dp)
+                .width(200.dp)
+                .verticalScroll(state = rememberScrollState())) {
+            ProductItem()
+            Box(modifier = Modifier.offset(y = -10.dp)){
+                TextDescription()
+            }
+        }
+
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TextDescription() {
+    val imageSize = 100.dp
+    Surface(shape = RoundedCornerShape(10)) {
+        AluveryTheme {
+            Box(modifier = Modifier
+                .heightIn(min = 250.dp, max = 300.dp)
+                .width(imageSize * 2)){
+
+                Text(text = LoremIpsum(500).values.first(),
+                    Modifier
+                        .background(color = Color.Magenta)
+                        .padding(all = 10.dp))/*,
+                    overflow = TextOverflow.Ellipsis)*/
+
+            }
+        }
+    }
+    
 }

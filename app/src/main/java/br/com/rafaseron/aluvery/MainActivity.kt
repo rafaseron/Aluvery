@@ -46,6 +46,8 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.rafaseron.aluvery.ui.tests.DesafioDeItem
+import br.com.rafaseron.aluvery.ui.tests.DesafioSecaoDeProdutos
+import br.com.rafaseron.aluvery.ui.tests.ProductItemWithDescription
 import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
 
 class MainActivity : ComponentActivity() {
@@ -54,6 +56,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AluveryTheme {
                 Surface {
+                    //DesafioSecaoDeProdutos()
                     ProductSection()
                     //ProductItem()
                     //DesafioDeItem()
