@@ -16,8 +16,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.rafaseron.aluvery.R
 import br.com.rafaseron.aluvery.model.Product
+import br.com.rafaseron.aluvery.sampledata.sampleProductList
 import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
 
 @Composable
@@ -56,22 +56,3 @@ private fun ProductSectionPreview() {
         }
     }
 }
-
-val sampleProductList:List<Product> = listOf(
-
-        Product("Hamburguer",
-            "15.49",
-            "Dois hamburgures, alface, queijo, molho especial, cebola, picles, num pao com gergelim",
-            R.drawable.burger, "", true),
-
-            Product("Fritas",
-                "7,99",
-                "",
-                R.drawable.fries,
-                "Fritas", false),
-
-            Product("Pizza",
-                "29,90",
-                "", R.drawable.pizza,
-                "", false)
-)

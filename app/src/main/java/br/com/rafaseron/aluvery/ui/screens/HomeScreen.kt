@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.rafaseron.aluvery.sampledata.sampleProductList
 import br.com.rafaseron.aluvery.ui.components.ProductSection
 
 @Composable
@@ -18,9 +19,9 @@ fun HomeScreen() {
         .fillMaxSize(1f)
         .verticalScroll(rememberScrollState())) {
         Spacer(modifier = Modifier)
-        ProductSection("Promoções", br.com.rafaseron.aluvery.ui.components.sampleProductList)
-        ProductSection("Salgadas", br.com.rafaseron.aluvery.ui.components.sampleProductList)
-        ProductSection("Doces", br.com.rafaseron.aluvery.ui.components.sampleProductList)
+        ProductSection("Promoções", sampleProductList)
+        ProductSection("Salgadas", sampleProductList)
+        ProductSection("Doces", sampleProductList)
         Spacer(modifier = Modifier)
     }
 }
