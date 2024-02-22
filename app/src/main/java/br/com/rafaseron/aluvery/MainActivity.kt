@@ -59,14 +59,30 @@ class MainActivity : ComponentActivity() {
         setContent {
             AluveryTheme {
                 Surface {
-                    //DesafioSecaoDeProdutos()
-                    //ProductSection()
-                    //ProductItem()
-                    //DesafioDeItem()
+
                 }
             }
         }
     }
+}
+
+@Composable
+fun App() {
+    AluveryTheme {
+        Surface {
+            Spacer(modifier = Modifier)
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier
+                .fillMaxSize(1f)
+                .verticalScroll(rememberScrollState())) {
+                Spacer(modifier = Modifier.padding(top = 2.dp))
+                ProductSection()
+                ProductSection()
+                ProductSection()
+                Spacer(modifier = Modifier.padding(bottom = 100.dp))
+            }
+        }
+    }
+
 }
 
 @Composable
@@ -76,13 +92,12 @@ fun ProductSection () {
         Text(text = "Promoções",
             fontWeight = FontWeight(400),
             fontSize = 20.sp,
-            modifier = Modifier.padding(start = 16.dp, top = 8.dp))
+            modifier = Modifier.padding(start = 16.dp))
 
 
         Row(modifier = Modifier
             .padding(
-                end = 16.dp,
-                bottom = 16.dp
+                end = 16.dp
             )
             .fillMaxWidth()
             .horizontalScroll(state = rememberScrollState() /*ScrollState(0)*/),
@@ -107,7 +122,7 @@ fun ProductSection () {
 
 
 
-            Spacer(modifier = Modifier) //esse spacer adiciona um espaco quando a lista terminar
+            //Spacer(modifier = Modifier) //esse spacer adiciona um espaco quando a lista terminar
         }
     }
     
@@ -241,6 +256,13 @@ fun ProductItemFinal(produto: Product) {
 
     }
 
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun AppPreview() {
+    App()
+    
 }
 
 @Preview(showBackground = true, /*widthDp = 1000*/)
