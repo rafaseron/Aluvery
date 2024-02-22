@@ -41,7 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
-import br.com.rafaseron.aluvery.ProductItem
+import br.com.rafaseron.aluvery.ui.components.ProductItem
 import br.com.rafaseron.aluvery.R
 import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
 import java.nio.file.WatchEvent
