@@ -18,9 +18,9 @@ fun HomeScreen() {
         .fillMaxSize(1f)
         .verticalScroll(rememberScrollState())) {
         Spacer(modifier = Modifier)
-        ProductSection()
-        ProductSection()
-        ProductSection()
+        ProductSection("Promoções", br.com.rafaseron.aluvery.ui.components.sampleProductList)
+        ProductSection("Salgadas", br.com.rafaseron.aluvery.ui.components.sampleProductList)
+        ProductSection("Doces", br.com.rafaseron.aluvery.ui.components.sampleProductList)
         Spacer(modifier = Modifier)
     }
 }

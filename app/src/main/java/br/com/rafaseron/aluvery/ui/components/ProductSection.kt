@@ -16,16 +16,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.rafaseron.aluvery.ui.components.ProductItemFinal
 import br.com.rafaseron.aluvery.R
 import br.com.rafaseron.aluvery.model.Product
 import br.com.rafaseron.aluvery.ui.theme.AluveryTheme
 
 @Composable
-fun ProductSection () {
+fun ProductSection (categoria: String, productList: List<Product>) {
     Column(modifier = Modifier, verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-        Text(text = "Promoções",
+        Text(text = categoria,
             fontWeight = FontWeight(400),
             fontSize = 20.sp,
             modifier = Modifier.padding(start = 16.dp))
@@ -39,31 +38,9 @@ fun ProductSection () {
             .horizontalScroll(state = rememberScrollState() /*ScrollState(0)*/),
             horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             Spacer(modifier = Modifier) //esse spacer adiciona um espaco antes da lista iniciar
-            ProductItem()
-            ProductItemFinal(
-                Product("Hamburguer",
-                "15.49",
-                "Dois hamburgures, alface, queijo, molho especial, cebola, picles, num pao com gergelim",
-                R.drawable.burger, "", true)
-            )
-
-            ProductItemFinal(
-                Product("Fritas",
-                "7,99",
-                "",
-                R.drawable.fries,
-                "Fritas", false)
-            )
-
-            ProductItemFinal(
-                Product("Pizza",
-                "29,90",
-                "", R.drawable.pizza,
-                "", false)
-            )
-
-
-
+            for (i in productList){
+                ProductItemFinal(i)
+            }
             //Spacer(modifier = Modifier) //esse spacer adiciona um espaco quando a lista terminar
         }
     }
@@ -75,7 +52,26 @@ fun ProductSection () {
 private fun ProductSectionPreview() {
     Surface {
         AluveryTheme {
-            ProductSection()
+            ProductSection("Doces", sampleProductList)
         }
     }
 }
+
+val sampleProductList:List<Product> = listOf(
+
+        Product("Hamburguer",
+            "15.49",
+            "Dois hamburgures, alface, queijo, molho especial, cebola, picles, num pao com gergelim",
+            R.drawable.burger, "", true),
+
+            Product("Fritas",
+                "7,99",
+                "",
+                R.drawable.fries,
+                "Fritas", false),
+
+            Product("Pizza",
+                "29,90",
+                "", R.drawable.pizza,
+                "", false)
+)
