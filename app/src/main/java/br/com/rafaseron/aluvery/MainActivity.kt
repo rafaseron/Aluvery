@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -45,6 +46,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.rafaseron.aluvery.model.Product
 import br.com.rafaseron.aluvery.ui.tests.ChallengeItemComDescricao
 import br.com.rafaseron.aluvery.ui.tests.DesafioDeItem
 import br.com.rafaseron.aluvery.ui.tests.DesafioSecaoDeProdutos
@@ -87,8 +89,24 @@ fun ProductSection () {
             horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             Spacer(modifier = Modifier) //esse spacer adiciona um espaco antes da lista iniciar
             ProductItem()
-            ProductItem()
-            ProductItem()
+            ProductItemFinal(Product("Hamburguer",
+                "15.49",
+                "Dois hamburgures, alface, queijo, molho especial, cebola, picles, num pao com gergelim",
+                R.drawable.burger, "", true))
+
+            ProductItemFinal(Product("Fritas",
+                "7,99",
+                "",
+                R.drawable.fries,
+                "Fritas", false))
+
+            ProductItemFinal(Product("Pizza",
+                "29,90",
+                "", R.drawable.pizza,
+                "", false))
+
+
+
             Spacer(modifier = Modifier) //esse spacer adiciona um espaco quando a lista terminar
         }
     }
@@ -139,6 +157,86 @@ fun ProductItem() {
                     fontWeight = FontWeight(400),
                     modifier = Modifier)
             }
+        }
+
+    }
+
+}
+@Composable
+fun ProductItemFinal(produto: Product) {
+
+    val hasDescription = produto.temDescricao
+    val purple = colorResource(id = R.color.purple_500)
+    val listColors = listOf<Color>(purple, Color.Cyan)
+    val imageSize = 100.dp //variavel para vincular e deixar padronizado os tamanhos dos composables
+
+    Surface(shadowElevation = 8.dp, shape = RoundedCornerShape(10.dp)) {
+
+        Column(
+            modifier = Modifier
+                .height(250.dp)
+                .width(imageSize * 2)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(0.dp)
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .height(imageSize)
+                    .fillMaxWidth()
+                    .background(brush = Brush.horizontalGradient(colors = listColors))
+            ) {
+
+                Box(modifier = Modifier.padding(horizontal = 50.dp)) {
+                    Image(
+                        painter = painterResource(id = produto.imageId),
+                        contentDescription = produto.contentDescription,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .width(imageSize)
+                            .height(imageSize)
+                            .offset(y = imageSize / 2)
+                            .clip(shape = CircleShape)
+                    )
+                }
+
+            }
+
+            Spacer(modifier = Modifier.height(imageSize / 2))
+
+            Column(
+                modifier = Modifier.padding(
+                    horizontal = 16.dp,
+                    vertical = 8.dp
+                )
+            ) {
+
+                Text(
+                    text = produto.name, fontSize = 18.sp,
+                    fontWeight = FontWeight(700),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                )
+                Text(
+                    text = "R$ ${produto.price.toString()}", fontSize = 14.sp,
+                    fontWeight = FontWeight(400),
+                    modifier = Modifier
+                )
+            }
+
+            if (hasDescription == true){
+                Text(text = produto.discription,
+                    modifier = Modifier
+                        .offset(y = -8.dp)
+                        .background(color = Color.Blue)
+                        .padding(
+                            start = 16.dp, end = 16.dp,
+                            top = 16.dp, bottom = 16.dp
+                        ))
+            }else{
+            }
+
         }
 
     }
